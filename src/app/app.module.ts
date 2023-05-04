@@ -14,12 +14,26 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {HttpClientModule} from "@angular/common/http";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {IndexComponent} from './index/index.component';
+import {ProfileComponent} from './profile/profile.component';
+import {MatIconModule} from "@angular/material/icon";
+import {TradingComponent} from './trading/trading.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {NgOptimizedImage} from "@angular/common";
+import {SafePipe} from './safe.pipe';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
+    IndexComponent,
+    ProfileComponent,
+    TradingComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +46,13 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     ReactiveFormsModule,
     MatInputModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    NgOptimizedImage,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

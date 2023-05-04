@@ -28,6 +28,6 @@ export class StorageService {
   }
 
   public isLogged(): boolean {
-    return this.getToken() !== null;
+    return !!window.sessionStorage.getItem(TOKEN);
   }
 }

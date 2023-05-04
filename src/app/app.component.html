@@ -1,7 +1,20 @@
 <mat-toolbar color="primary">
-  <span>BrokerApp</span>
+  <span><a class="logo" routerLink="index">BrokerApp</a></span>
   <span class="fill-remaining-space"></span>
-  <button mat-raised-button routerLink="login" class="m-3">Login</button>
-  <button mat-raised-button routerLink="register">Sign Up</button>
+  <div *ngIf="!isLoggedIn">
+    <button mat-raised-button routerLink="login" class="m-3">Login</button>
+    <button mat-raised-button routerLink="register">Sign Up</button>
+  </div>
+  <div *ngIf="isLoggedIn">
+    <button mat-mini-fab routerLink="trading">
+      <mat-icon>insights</mat-icon>
+    </button>
+    <button mat-mini-fab routerLink="profile" class="m-3">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-mini-fab (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 <router-outlet></router-outlet>

@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {StorageService} from "../services/storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent {
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private authService: AuthService, private snackBar: MatSnackBar, private storage: StorageService) {
+  constructor(private authService: AuthService, private snackBar: MatSnackBar, private storage: StorageService,
+              private router: Router) {
   }
 
   submit() {
@@ -25,8 +27,10 @@ export class LoginComponent {
         this.form.value.password
       ).subscribe({
         next: data => {
-          this.snackBar.open("User successfully logged", "Close");
           this.storage.saveToken(data.token);
+          this.router.navigate(['trading']).then(() => {
+            window.location.reload();
+          });
         },
         error: err => {
           this.snackBar.open(err.error.message, "Close");

@@ -1,0 +1,41 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <mat-list>
+      <a *ngFor="let stock of stocks" (click)="showStock(stock.ticker)">
+        <mat-list-item class="stock-item">
+          <img class="logo-img" width="50" height="50" ngSrc="{{stock.logo}}" alt="stock chart"/>
+          {{stock.name}}
+        </mat-list-item>
+      </a>
+    </mat-list>
+    <button mat-fab (click)="loadMoreStocks(PAGE_SIZE)" color="primary"
+            style="margin-left: 120px; margin-bottom: 50px;">
+      <mat-icon>sync</mat-icon>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <iframe width='1000' height='500' [src]='chart | safe' class="m-0 p-0"></iframe>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="mat-mdc-form-field-flex">
+      <div class="wrapper">
+        <mat-form-field>
+          <mat-label>Amount</mat-label>
+          <input matInput type="number" placeholder="Enter a number" formControlName="amount">
+          <mat-error *ngIf="form.get('amount')?.hasError('min')">
+            Amount must be greater than 0
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Operation</mat-label>
+          <mat-select formControlName="operation">
+            <mat-option [value]="'buy'">Buy</mat-option>
+            <mat-option [value]="'sell'">Sell</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('operation')?.hasError('required')">
+            Operation is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" class="m-3">Submit</button>
+      </div>
+    </form>
+  </mat-sidenav-content>
+</mat-sidenav-container>
