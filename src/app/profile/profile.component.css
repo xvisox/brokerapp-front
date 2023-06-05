@@ -1,7 +1,7 @@
 #profile {
   width: 50%;
   margin: 100px auto;
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(250, 240, 240);
 }
 
 #header {
@@ -27,6 +27,8 @@
 
 #portfolio {
   margin: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 #stock-list {
@@ -41,12 +43,33 @@
     rgba(254, 128, 128, 1) 100%
   );
   margin: 1em;
-  border-radius: 50%;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 10px;
   border: 2px solid rgb(107, 97, 97);
-}
-
-.stock-info {
   display: flex;
   justify-content: space-between;
-  font-weight: 500;
+  align-items: center;
+  max-height: 65px;
+}
+
+.stock-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0.5em;
+}
+
+.stock-name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.stock-amount {
+  background-color: #e6e6e6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  font-size: 1.5em;
+  padding: 0.3em;
+  border-radius: 10px;
+  font-weight: bold;
 }
