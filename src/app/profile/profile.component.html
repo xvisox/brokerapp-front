@@ -2,15 +2,15 @@
   <mat-card-header id="header">
     <img id="avatar" mat-card-avatar src="assets/avatars/avatar1.png" />
     <div id="account-info">
-      <mat-card-title
-        >User: <span style="font-weight: bold">Alexander</span></mat-card-title
-      >
+      <mat-card-title>
+        User: <span style="font-weight: bold">{{ username }}</span>
+      </mat-card-title>
     </div>
     <div id="account-info">
-      <mat-card-title
-        >Account balance:
-        <span style="font-weight: bold">$100</span></mat-card-title
-      >
+      <mat-card-title>
+        Account balance:
+        <span style="font-weight: bold">${{ balance }}</span>
+      </mat-card-title>
     </div>
   </mat-card-header>
   <mat-card-content id="portfolio">
