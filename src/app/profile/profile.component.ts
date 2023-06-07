@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
         this.balance = data.balance;
       },
       error: (err) => {
-        console.log(err);
+        console.log(err.error.message);
       },
     });
   }
@@ -33,25 +33,22 @@ export class ProfileComponent implements OnInit {
   private getPortfolio(): void {
     this.profileService.getPortfolio().subscribe({
       next: (data) => {
-        console.log(data);
-        this.portfolioItems = data;
+        this.portfolioItems = data.portfolio;
         const detailsObservables: Observable<any>[] = this.portfolioItems.map(
           (portfolioItem) =>
             this.profileService.getStockDetails(portfolioItem.ticker)
         );
         forkJoin(detailsObservables).subscribe((responses) => {
-          console.log(responses);
           responses.forEach((response) => {
             this.stockDetails.push({
               logo: response.logo,
               name: response.name,
             });
           });
-          console.log(this.stockDetails);
         });
       },
       error: (err) => {
-        console.log(err);
+        console.log(err.error.message);
       },
     });
   }
