@@ -1,1 +1,41 @@
-<p>profile works!</p>
+<mat-card id="profile">
+  <mat-card-header id="header">
+    <img id="avatar" mat-card-avatar src="assets/avatars/avatar1.png" />
+    <div id="account-info">
+      <mat-card-title>
+        User: <span style="font-weight: bold">{{ username }}</span>
+      </mat-card-title>
+    </div>
+    <div id="account-info">
+      <mat-card-title>
+        Account balance:
+        <span style="font-weight: bold">${{ balance }}</span>
+      </mat-card-title>
+    </div>
+  </mat-card-header>
+  <mat-card-content id="portfolio">
+    <div
+      *ngFor="let stockDetail of stockDetails; let i = index"
+      class="stock-item"
+    >
+      <img
+        matListItemAvatar
+        alt="logo"
+        ngSrc="{{ stockDetail.logo }}"
+        class="stock-logo"
+        width="50"
+        height="50"
+      />
+      <span class="stock-name">{{ stockDetail.name }}</span>
+      <span class="stock-amount"
+        >{{ portfolioItems[i].amount }}
+        <mat-icon
+          aria-hidden="false"
+          aria-label="times symbol"
+          fontIcon="close"
+        ></mat-icon>
+        {{ portfolioItems[i].ticker }}</span
+      >
+    </div>
+  </mat-card-content>
+</mat-card>
