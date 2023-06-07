@@ -14,95 +14,28 @@
     </div>
   </mat-card-header>
   <mat-card-content id="portfolio">
-    <div class="stock-item">
+    <div
+      *ngFor="let stockDetail of stockDetails; let i = index"
+      class="stock-item"
+    >
       <img
         matListItemAvatar
         alt="logo"
-        src="assets/logos/mercedes-logo.png"
+        ngSrc="{{ stockDetail.logo }}"
         class="stock-logo"
+        width="50"
+        height="50"
       />
-      <span class="stock-name">MBG</span>
-      <span class="stock-amount">100</span>
-    </div>
-    <div class="stock-item">
-      <img
-        matListItemAvatar
-        alt="logo"
-        src="assets/logos/microsoft-logo.png"
-        class="stock-logo"
-      />
-      <span class="stock-name">MSFT</span>
-      <span class="stock-amount">55</span>
-    </div>
-    <div class="stock-item">
-      <img
-        matListItemAvatar
-        alt="logo"
-        src="assets/logos/tesla-logo.png"
-        class="stock-logo"
-      />
-      <span class="stock-name">TSLA</span>
-      <span class="stock-amount">211</span>
-    </div>
-    <div class="stock-item">
-      <img
-        matListItemAvatar
-        alt="logo"
-        src="assets/logos/mercedes-logo.png"
-        class="stock-logo"
-      />
-      <span class="stock-name">MBG</span>
-      <span class="stock-amount">100</span>
-    </div>
-    <div class="stock-item">
-      <img
-        matListItemAvatar
-        alt="logo"
-        src="assets/logos/microsoft-logo.png"
-        class="stock-logo"
-      />
-      <span class="stock-name">MSFT</span>
-      <span class="stock-amount">55</span>
-    </div>
-    <div class="stock-item">
-      <img
-        matListItemAvatar
-        alt="logo"
-        src="assets/logos/tesla-logo.png"
-        class="stock-logo"
-      />
-      <span class="stock-name">TSLA</span>
-      <span class="stock-amount">211</span>
-    </div>
-    <div class="stock-item">
-      <img
-        matListItemAvatar
-        alt="logo"
-        src="assets/logos/mercedes-logo.png"
-        class="stock-logo"
-      />
-      <span class="stock-name">MBG</span>
-      <span class="stock-amount">100</span>
-    </div>
-    <div class="stock-item">
-      <img
-        matListItemAvatar
-        alt="logo"
-        src="assets/logos/microsoft-logo.png"
-        class="stock-logo"
-      />
-      <span class="stock-name">MSFT</span>
-      <span class="stock-amount">55</span>
-    </div>
-    <div class="stock-item">
-      <img
-        matListItemAvatar
-        alt="logo"
-        src="assets/logos/tesla-logo.png"
-        class="stock-logo"
-      />
-      <span class="stock-name">TSLA</span>
-      <span class="stock-amount">211</span>
+      <span class="stock-name">{{ stockDetail.name }}</span>
+      <span class="stock-amount"
+        >{{ portfolioItems[i].amount }}
+        <mat-icon
+          aria-hidden="false"
+          aria-label="times symbol"
+          fontIcon="close"
+        ></mat-icon>
+        {{ portfolioItems[i].ticker }}</span
+      >
     </div>
   </mat-card-content>
 </mat-card>
