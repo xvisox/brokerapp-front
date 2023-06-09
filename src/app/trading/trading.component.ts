@@ -5,6 +5,7 @@ import {TradingService} from "../services/trading.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {stocks} from "./top50sp";
+import {CacheService} from "../services/cache.service";
 
 // Number of stocks to display per page
 const FIRST_PAGE_SIZE = 10;
@@ -20,7 +21,7 @@ const CHART_URL_TEMPLATE = 'https://api.stockdio.com/visualization/financial/cha
   styleUrls: ['./trading.component.css']
 })
 export class TradingComponent implements OnInit {
-  stocks: Stock[] = [];
+  stocksDetails: Stock[] = [];
   ticker: string = '';
   chart: string = '';
   lastIdx: number = 0;
@@ -29,7 +30,8 @@ export class TradingComponent implements OnInit {
     operation: new FormControl('', [Validators.required])
   });
 
-  constructor(private http: HttpClient, private tradingService: TradingService, private snackBar: MatSnackBar) {
+  constructor(private http: HttpClient, private tradingService: TradingService, private snackBar: MatSnackBar,
+              private cache: CacheService) {
   }
 
   ngOnInit(): void {
@@ -38,20 +40,28 @@ export class TradingComponent implements OnInit {
     this.loadMoreStocks(FIRST_PAGE_SIZE);
   }
 
-  loadMoreStocks(pages : number) {
+  loadMoreStocks(pages: number) {
     for (let i = 0; i < pages; i++) {
       this.pushStock();
     }
   }
 
   pushStock() {
-    this.http.get(API_URL + stocks[this.lastIdx] + KEY).subscribe((data: any) => {
-      this.stocks.push({
-        logo: data.logo,
-        name: data.name,
-        ticker: data.ticker
+    let ticker = stocks[this.lastIdx];
+    let stock = this.cache.getStock(ticker);
+    if (stock) {
+      this.stocksDetails.push(stock);
+    } else {
+      this.http.get(API_URL + ticker + KEY).subscribe((data: any) => {
+        let fetchedStock = {
+          logo: data.logo,
+          name: data.name,
+          ticker: data.ticker
+        }
+        this.stocksDetails.push(fetchedStock);
+        this.cache.putStock(ticker, fetchedStock);
       });
-    });
+    }
     this.lastIdx++;
   }
 

@@ -1,7 +1,7 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" opened>
     <mat-list>
-      <a *ngFor="let stock of stocks" (click)="showStock(stock.ticker)">
+      <a *ngFor="let stock of stocksDetails" (click)="showStock(stock.ticker)">
         <mat-list-item class="stock-item">
           <img class="logo-img" width="50" height="50" ngSrc="{{stock.logo}}" alt="stock chart"/>
           {{stock.name}}
