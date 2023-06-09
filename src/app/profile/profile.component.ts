@@ -3,7 +3,8 @@ import { OnInit } from '@angular/core';
 import { ProfileService } from '../services/profile.service';
 import { PortfolioItem } from './portfolioItem';
 import { StockDetail } from './stockDetail';
-import { Observable, forkJoin } from 'rxjs';
+import { CacheService } from '../services/cache.service';
+import { Stock } from '../trading/stock';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +19,10 @@ export class ProfileComponent implements OnInit {
 
   protected readonly NUMBER_FORMAT: string = '1.2-2';
 
-  constructor(private profileService: ProfileService) {}
+  constructor(
+    private profileService: ProfileService,
+    private cacheService: CacheService
+  ) {}
 
   private getUserData(): void {
     this.profileService.getUserData().subscribe({
@@ -36,17 +40,13 @@ export class ProfileComponent implements OnInit {
     this.profileService.getPortfolio().subscribe({
       next: (data) => {
         this.portfolioItems = data.portfolio;
-        const detailsObservables: Observable<any>[] = this.portfolioItems.map(
-          (portfolioItem) =>
-            this.profileService.getStockDetails(portfolioItem.ticker)
-        );
-        forkJoin(detailsObservables).subscribe((responses) => {
-          responses.forEach((response) => {
-            this.stockDetails.push({
-              logo: response.logo,
-              name: response.name,
-            });
-          });
+        this.stockDetails = this.portfolioItems.map((item) => {
+          const stock: Stock | undefined = this.cacheService.getStock(
+            item.ticker
+          );
+          return stock
+            ? { logo: stock.logo, name: stock.name }
+            : { logo: '', name: '' };
         });
       },
       error: (err) => {
