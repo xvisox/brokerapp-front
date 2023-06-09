@@ -1,0 +1,16 @@
+tr[mat-header-row] {
+  background-color: #1A237E;
+}
+
+th {
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  font-weight: 500;
+}
+
+tr[mat-row]:nth-child(even) {
+  background-color: rgb(233, 240, 246);
+}

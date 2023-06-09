@@ -24,6 +24,8 @@ import {NgOptimizedImage} from "@angular/common";
 import {SafePipe} from './safe.pipe';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {HistoryComponent} from './history/history.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import {MatSelectModule} from "@angular/material/select";
     ProfileComponent,
     TradingComponent,
     SafePipe,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatListModule,
     NgOptimizedImage,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

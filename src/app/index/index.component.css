@@ -1,0 +1,36 @@
+#landing-page {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(187, 183, 255, 1) 0%,
+    rgb(104, 119, 203) 50%
+  );
+}
+
+#landing-page-title {
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 1.5em;
+  padding-bottom: 0.7em;
+}
+
+#landing-page-desc {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  margin-top: 60px;
+  font-size: 27px;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  padding: 0.7em;
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  background-color: white;
+}
+
+.desc-item {
+  margin-top: 25px;
+}
