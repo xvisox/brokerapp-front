@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
   portfolioItems: PortfolioItem[] = [];
   stockDetails: StockDetail[] = [];
 
+  protected readonly NUMBER_FORMAT: string = '1.2-2';
+
   constructor(private profileService: ProfileService) {}
 
   private getUserData(): void {

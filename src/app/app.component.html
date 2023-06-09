@@ -6,11 +6,14 @@
     <button mat-raised-button routerLink="register">Sign Up</button>
   </div>
   <div *ngIf="isLoggedIn">
-    <button mat-mini-fab routerLink="trading">
+    <button mat-mini-fab routerLink="trading" class="m-3">
       <mat-icon>insights</mat-icon>
     </button>
-    <button mat-mini-fab routerLink="profile" class="m-3">
+    <button mat-mini-fab routerLink="profile">
       <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-mini-fab routerLink="history" class="m-3">
+      <mat-icon>history</mat-icon>
     </button>
     <button mat-mini-fab (click)="logout()">
       <mat-icon>logout</mat-icon>

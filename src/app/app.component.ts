@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StorageService} from "./services/storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import {StorageService} from "./services/storage.service";
 export class AppComponent implements OnInit {
   isLoggedIn = false;
 
-  constructor(private storage: StorageService) {
+  constructor(private storage: StorageService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -19,6 +20,9 @@ export class AppComponent implements OnInit {
   logout() {
     this.storage.clean();
     this.isLoggedIn = false;
+    this.router.navigate(['']).then(() => {
+      window.location.reload();
+    });
   }
 
   update() {

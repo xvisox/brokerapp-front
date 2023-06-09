@@ -9,7 +9,7 @@
     <div id="account-info">
       <mat-card-title>
         Account balance:
-        <span style="font-weight: bold">${{ balance }}</span>
+        <span style="font-weight: bold">${{ balance | number: NUMBER_FORMAT}}</span>
       </mat-card-title>
     </div>
   </mat-card-header>
