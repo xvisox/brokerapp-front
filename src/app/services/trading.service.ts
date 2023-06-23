@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {StorageService} from "./storage.service";
+import { environment } from 'src/environments/environment';
 
-const API_URL = 'http://localhost:8080/api/v1/transactions/'
+const API_URL = `http://${environment.ip}:${environment.port}/api/v1/transactions/`
 const BUY = 'buy'
 const SELL = 'sell'
 

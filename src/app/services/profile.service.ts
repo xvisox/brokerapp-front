@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
-const USERS_API_URL = 'http://localhost:8080/api/v1/users/';
-const TRANSACTIONS_API_URL = 'http://localhost:8080/api/v1/transactions/';
+const USERS_API_URL = `http://${environment.ip}:${environment.port}/api/v1/users/`;
+const TRANSACTIONS_API_URL = `http://${environment.ip}:${environment.port}/api/v1/transactions/`;
 
 @Injectable({
   providedIn: 'root',
