@@ -3,7 +3,7 @@ export const stocks = [
   'AAPL',  // Apple Inc.
   'MSFT',  // Microsoft Corporation
   'AMZN',  // Amazon.com, Inc.
-  'GOOG',  // Alphabet Inc. (Class C)
+  'GOOGL',  // Alphabet Inc. (Class C)
   'TSLA',  // Tesla, Inc.
   'NVDA',  // NVIDIA Corporation
   'JPM',   // JPMorgan Chase & Co.
