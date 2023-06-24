@@ -1,0 +1,22 @@
+runtime: nodejs18
+
+instance_class: F2
+
+env_variables: 
+  BUCKET_NAME: "brokerapp-front-bucket"
+
+handlers:
+- url: /
+  secure: never
+  static_files: dist/brokerapp-front/index.html
+  upload: dist/brokerapp-front/index.html
+
+- url: /(.*\.(.+))$
+  secure: never
+  static_files: dist/brokerapp-front/\1 
+  upload: dist/brokerapp-front/(.*\.(.+))$
+
+- url: /(.*)
+  secure: never
+  static_files: dist/brokerapp-front/index.html
+  upload: dist/brokerapp-front/index.html
